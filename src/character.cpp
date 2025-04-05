@@ -45,9 +45,26 @@ int Character::getHealth() const {
     return health;
 }
 
+std::string Character::getName() const {
+    return name;
+}
+
+const Inventory& Character::getInventory() const {
+    return inventory;
+}
+
+// New methods to add items to the inventory
+void Character::addWeaponToInventory(Weapon* weapon) {
+    inventory.addWeapon(weapon);
+}
+
+void Character::addArmorToInventory(Armor* armor) {
+    inventory.addArmor(armor);
+}
+
 std::ostream& operator<<(std::ostream& os, const Character& character) {
     os << "----------------\n";
-    os << "Character: " << character.name << "\nHealth: " << character.health << "\n";
+    os << "Character: " << character.getName() << "\nHealth: " << character.getHealth() << "\n";
     os << character.inventory;
     os << "----------------\n";
     return os;
